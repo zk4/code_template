@@ -3,6 +3,7 @@ import os
 import yaml
 import logging.config
 import logging
+from .color  import color
 
 def setup_logging(default_path='logging.yaml', default_level=logging.DEBUG, env_key='LOG_CFG'):
     mydir = os.path.dirname(os.path.abspath(__file__))
@@ -23,17 +24,9 @@ def setup_logging(default_path='logging.yaml', default_level=logging.DEBUG, env_
         logging.basicConfig(level=default_level)
         print('Failed to load configuration file. Using default configs')
 
-    W  = '\033[0m'  # white (normal)
-    R  = '\033[31m' # red
-    G  = '\033[32m' # green
-    O  = '\033[33m' # orange
-    B  = '\033[34m' # blue
-    P  = '\033[35m' # purple
-    C  = '\033[36m' # cyan
-    GR = '\033[37m' # gray
 
-    logging.addLevelName( logging.INFO, G+"%s\033[1;0m" % logging.getLevelName(logging.INFO))
-    logging.addLevelName( logging.DEBUG, O+"%s\033[1;0m" % logging.getLevelName(logging.DEBUG))
+    logging.addLevelName( logging.INFO, color.G+"%s\033[1;0m" % logging.getLevelName(logging.INFO))
+    logging.addLevelName( logging.DEBUG, color.O+"%s\033[1;0m" % logging.getLevelName(logging.DEBUG))
     logging.addLevelName( logging.WARNING, "\033[1;31m%s\033[1;0m" % logging.getLevelName(logging.WARNING))
     logging.addLevelName( logging.ERROR, "\033[1;41m%s\033[1;0m" % logging.getLevelName(logging.ERROR))
     logging.addLevelName( logging.CRITICAL, "\033[1;41m%s\033[1;0m" % logging.getLevelName(logging.CRITICAL))

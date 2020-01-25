@@ -3,17 +3,11 @@ import os
 import yaml
 import logging.config
 import logging
-import coloredlogs
-class ColoredFormatter(logging.Formatter):
-    def format(self, record):
-        if record.levelno == logging.WARNING:
-            record.msg = '\033[93m%s\033[0m' % record.msg
-        elif record.levelno == logging.ERROR:
-            record.msg = '\033[91m%s\033[0m' % record.msg
-        return logging.Formatter.format(self, record)
 
 def setup_logging(default_path='logging.yaml', default_level=logging.DEBUG, env_key='LOG_CFG'):
+    mydir = os.path.dirname(os.path.abspath(__file__))
     path = default_path
+    path = os.path.join(mydir,path)
     value = os.getenv(env_key, None)
     if value:
         path = value

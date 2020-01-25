@@ -3,10 +3,9 @@ import os
 import yaml
 import logging.config
 import logging
-from .color  import color
+from  .color  import color
 
 def setup_logging(default_path='logging.yaml', default_level=logging.DEBUG, env_key='LOG_CFG'):
-    mydir = os.path.dirname(os.path.abspath(__file__))
     path = default_path
     path = os.path.join(mydir,path)
     value = os.getenv(env_key, None)
@@ -22,7 +21,7 @@ def setup_logging(default_path='logging.yaml', default_level=logging.DEBUG, env_
                 print('Error in Logging Configuration. Using default configs')
     else:
         logging.basicConfig(level=default_level)
-        print('Failed to load configuration file. Using default configs')
+        print('.Failed to load configuration file. Using default configs')
 
 
     logging.addLevelName( logging.INFO, color.G+"%s\033[1;0m" % logging.getLevelName(logging.INFO))

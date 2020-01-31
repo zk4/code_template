@@ -6,6 +6,7 @@ import logging
 from  .color  import color
 
 def setup_logging(default_path='logging.yaml', default_level=logging.DEBUG, env_key='LOG_CFG'):
+    mydir = os.path.dirname(os.path.abspath(__file__))
     path = default_path
     path = os.path.join(mydir,path)
     value = os.getenv(env_key, None)

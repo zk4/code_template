@@ -14,7 +14,15 @@ class color:
 
 class ColorStreamHandler(StreamHandler):
     def emit(self, record):
+        if record.levelname  == "INFO":
+            record.msg=color.G + record.getMessage()+ color.W
         if record.levelname  == "ERROR":
+            record.msg=color.O + record.getMessage()+ color.W
+        if record.levelname  == "CRITICAL":
             record.msg=color.R + record.getMessage()+ color.W
+        if record.levelname  == "WARNING":
+            record.msg=color.B + record.getMessage()+ color.W
+        # if record.levelname  == "INFO":
+        #     record.msg=color.G + record.getMessage()+ color.W
         super().emit(record)
 

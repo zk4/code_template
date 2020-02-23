@@ -1,8 +1,6 @@
 version: 1
 disable_existing_loggers: true
 
-# logging.Formatter("[%(asctime)s] [%(levelname)8s] --- %(message)s (%(filename)s:%(lineno)s)", "%Y-%m-%d %H:%M:%S")
-
 formatters:
     standard:
       format: '[%(levelname)-8s] %(filename)s:%(lineno)s  %(message)s'

@@ -1,0 +1,30 @@
+version: 1
+disable_existing_loggers: true
+
+# logging.Formatter("[%(asctime)s] [%(levelname)8s] --- %(message)s (%(filename)s:%(lineno)s)", "%Y-%m-%d %H:%M:%S")
+
+formatters:
+    standard:
+      format: '[%(levelname)-8s] %(filename)s:%(lineno)s  %(message)s'
+    error:
+        format: "[%(asctime)s]:%(levelname)s <PID %(process)d:%(processName)s> %(name)s.%(funcName)s(): %(message)s"
+
+handlers:
+    console:
+        class: logging.StreamHandler
+        formatter: standard
+
+    color_console:
+        class: logx.ColorStreamHandler
+        formatter: standard
+
+root:
+    level: DEBUG
+    handlers: [color_console]
+    propagate: no
+
+loggers:
+    logx:
+        level: DEBUG
+        handlers: [console]
+        propagate: no

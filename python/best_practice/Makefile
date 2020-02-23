@@ -27,17 +27,17 @@ coverage:
 	pytest --cov=rabbit/ tests/
 
 main:
-	python -m rabbit eat -c 2
+	python3 -m rabbit eat -c 2
 
 install: uninstall
-	pip install . 
+	pip3 install . 
 
 uninstall:
-	pip uninstall rabbit
+	pip3 uninstall rabbit
 
 run:
 	rabbit 2
-	python -m rabbit eat -c 2
+	python3 -m rabbit eat -c 2
 	
 
 all: rm uninstall install run 
@@ -48,12 +48,12 @@ pure-all: env-rm rm env install test run
 
 	
 upload-to-test: clean
-	python setup.py bdist_wheel --universal
+	python3 setup.py bdist_wheel --universal
 	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
 
 upload-to-prod: clean
-	python setup.py bdist_wheel --universal
+	python3 setup.py bdist_wheel --universal
 	twine upload dist/*
 
 
@@ -62,8 +62,8 @@ freeze:
 	pipreqs . --force
 
 freeze-global:
-	#  pip will find all the module not belong to standard  library
-	pip freeze > requirements.txt
+	#  pip3 will find all the module not belong to standard  library
+	pip3 freeze > requirements.txt
 
 
 env-rm:

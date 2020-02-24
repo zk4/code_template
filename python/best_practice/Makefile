@@ -36,7 +36,6 @@ uninstall:
 	pip3 uninstall rabbit
 
 run:
-	rabbit 2
 	python3 -m rabbit eat -c 2
 	
 

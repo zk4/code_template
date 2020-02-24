@@ -1,4 +1,4 @@
-from logging import StreamHandler
+from logging import Handler
 import logging
 
 class color:
@@ -12,7 +12,7 @@ class color:
     GR = '\033[37m' # gray
 
 
-class ColorStreamHandler(StreamHandler):
+class ColoredHandler(Handler):
     def emit(self, record):
         if record.levelname  == "INFO":
             record.msg=color.G + record.getMessage()+ color.W
@@ -22,7 +22,4 @@ class ColorStreamHandler(StreamHandler):
             record.msg=color.R + record.getMessage()+ color.W
         if record.levelname  == "WARNING":
             record.msg=color.B + record.getMessage()+ color.W
-        # if record.levelname  == "INFO":
-        #     record.msg=color.G + record.getMessage()+ color.W
-        super().emit(record)
 

@@ -1,4 +1,4 @@
 #coding: utf-8
 from .setup_logging import setup_logging
-from .color_stream_handler import ColorStreamHandler
+from .colored_handler import ColoredHandler
 setup_logging()

@@ -4,22 +4,22 @@ disable_existing_loggers: true
 formatters:
     standard:
       # format: '[%(levelname)-8s] %(filename)s:%(lineno)-5s  %(message)s'
-      format: '%(filename)s:%(lineno)-5s  %(message)s'
+      format: "%(filename)s:%(lineno)-4s %(message)s"
     error:
-        format: "[%(asctime)s]:%(levelname)s <PID %(process)d:%(processName)s> %(name)s.%(funcName)s(): %(message)s"
+        format: "[%(asctime)s]:%(levelname)s <PID %(process)d:%(processName)s> %(name)s.%(funcName)s():\n %(message)s"
 
 handlers:
     console:
         class: logging.StreamHandler
         formatter: standard
 
-    color_console:
-        class: logx.ColorStreamHandler
+    colored:
+        class: logx.ColoredHandler
         formatter: standard
 
 root:
     level: DEBUG
-    handlers: [color_console]
+    handlers: [colored,console]
     propagate: no
 
 loggers:

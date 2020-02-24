@@ -67,9 +67,10 @@ freeze-global:
 env-rm:
 	rm -rdf env
 
-
-env:
+env-create: 
 	python3 -m venv env
+
+env: env-create
 	. env/bin/activate
 
 

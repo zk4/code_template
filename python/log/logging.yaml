@@ -4,7 +4,7 @@ disable_existing_loggers: true
 formatters:
     standard:
       # format: '[%(levelname)-8s] %(filename)s:%(lineno)-5s  %(message)s'
-      format: "%(filename)s:%(lineno)-4s %(message)s"
+      format: "%(module)s:%(lineno)-4s %(message)s"
     error:
         format: "[%(asctime)s]:%(levelname)s <PID %(process)d:%(processName)s> %(name)s.%(funcName)s():\n %(message)s"
 
@@ -24,5 +24,9 @@ root:
 loggers:
     logx:
         level: DEBUG
+        handlers: [colored,console]
+        propagate: no
+    mylib:
+        level: WARNING
         handlers: [colored,console]
         propagate: no

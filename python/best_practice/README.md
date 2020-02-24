@@ -40,12 +40,13 @@ we can get the output by two ways:
 ## packing module or cmd
 
 ###  local 
-fort quck test purpose
+for quick test purpose
 - install: `pip install .` 
-- uninstall: `pip uninstall .`
+- uninstall: `pip uninstall <module_name>`
 
 > make install
 > make uninstall
+
 
 ### net
 upload to test server:

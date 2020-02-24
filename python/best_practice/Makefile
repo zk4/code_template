@@ -25,8 +25,6 @@ coverage-html:
 coverage:
 	pytest --cov=rabbit/ tests/
 
-main:
-	python3 -m rabbit eat -c 2
 
 install: uninstall
 	pip3 install . 
@@ -34,9 +32,11 @@ install: uninstall
 uninstall:
 	pip3 uninstall modulename
 
+main:
+	python3 main.py eat -c 2
+
 run:
 	python3 -m rabbit eat -c 2
-	
 
 all: rm uninstall install run 
 

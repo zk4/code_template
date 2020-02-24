@@ -1,22 +1,22 @@
 # intro
-suppose you want to make a comand line tool called rabbit.
+suppose you want to make a comand line tool called ra.
 it accept integer as numbers
 ouput carrots we need to feed
 ```
 ex:
-	cmd> rabbit 2 
+	cmd> ra 2 
 	ouput: 4
 ```
 
 we can get the output by two ways:
 - command line
 	```bash
-	 rabbit  2
+	 ra  2
 	```
 
 - call python moudle 
   ``` bash
-  python -m rabbit 2
+  python -m ra 2
   ```
 
 
@@ -36,11 +36,33 @@ run `make test`
 ## run
 `make run ` will run in module mode 
 `make main` will run in normal mode
+You can see that main.py and rabbit/__main__.py are the same  content file.
+
+why do we need main.py ? Could I just use __main__.py to run  like this?
+``` bash
+python rabbit/__main__.py
+```
+You cound not.
+
+That is because the top-level package problem.
+
+Ex:
+```
+python main.py 
+top-level package is the same as main.py
+
+python src/func/main.py  
+top-level package is the same as main.py, aka func 
+top-level package is the folder where you run this command from
+```
+So , why rabbit/__main__.py does not work.
+because top-level package is rabbit now.
+
 
 ## logging 
   Always use logging for log print,don`t use `print`
   logging config is controlled by `logging.yml`, which can control every module level
-  call `setup_logging` in main file (rabbit)
+  call `setup_logging` in main file (ra)
 
 ## make module
   update readmeput moudle in the folder parallel with logx folder.
@@ -80,7 +102,7 @@ upload to prod server:
 pytest -s -v  tests/
 
 # test with coverage
-pytest --cov=rabbit/ tests/
+pytest --cov=ra/ tests/
 
 ```
 >  make test

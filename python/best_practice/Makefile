@@ -1,6 +1,5 @@
 
-rm:
-	find . -name '*.pyc' -exec rm -f {} +
+rm: find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
 	find . -type d -iname '*egg-info' -exec rm -rdf {} +

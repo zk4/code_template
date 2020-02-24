@@ -3,7 +3,7 @@ from .logx import setup_logging
 import logging
 import argparse
 
-# don`t remove this line 
+# don`t remove this line
 setup_logging()
 
 logger = logging.getLogger(__name__)
@@ -30,6 +30,6 @@ def createParse():
     eat_parser = subparsers.add_parser('eat',formatter_class=argparse.ArgumentDefaultsHelpFormatter, description="",  help='sub command demo')
     eat_parser.add_argument('-c', '--count',type=int,required=False, help='carrots count', default="")  
     eat_parser.add_argument('-t', '--test', help='test questions', default=False, action='store_true') 
-    eat_parser.add_argument("ids",  help="usage: rabbit ids" )
+    # eat_parser.add_argument("ids",  help="usage: rabbit ids" )
 
     return parser

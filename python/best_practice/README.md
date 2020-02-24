@@ -1,22 +1,22 @@
 # intro
-suppose you want to make a comand line tool called ra.
+suppose you want to make a comand line tool called rabbit.
 it accept integer as numbers
 ouput carrots we need to feed
 ```
 ex:
-	cmd> ra 2 
+	cmd> rabbit 2 
 	ouput: 4
 ```
 
 we can get the output by two ways:
 - command line
 	```bash
-	 ra  2
+	 rabbit  2
 	```
 
 - call python moudle 
   ``` bash
-  python -m ra 2
+  python -m rabbit 2
   ```
 
 

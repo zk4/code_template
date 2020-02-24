@@ -91,31 +91,28 @@ for quick test purpose
 > make uninstall
 
 
-### net
+### upload to test or prod PYPI server 
 upload to test server:
-`python setup.py bdist_wheel --universal
-	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-`
-> make upload-to-test
+```
+make upload-to-test 
+```
 
 upload to prod server:
-`python setup.py bdist_wheel --universal
-	twine upload dist/*
-`
-> make upload-to-prod
-
-
-- test and coverage 
 ```
-# pure test
-pytest -s -v  tests/
-
-# test with coverage
-pytest --cov=ra/ tests/
-
+make upload-to-prod
 ```
->  make test
->  make coverage
+
+### test and coverage 
+
+#### pure test
+```
+make test
+```
+
+#### test with coverage
+```
+make coverage
+```
 
 
 

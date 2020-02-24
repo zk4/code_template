@@ -7,7 +7,7 @@ rm: find . -name '*.pyc' -exec rm -f {} +
 	rm -rf htmlcov
 	rm -rf dist
 	rm -rf build
-	rm -rf proxy.py.egg-info
+	# rm -rf .py.egg-info
 	rm -rf .pytest_cache
 	rm -rf .hypothesis
 	rm -rdf assets
@@ -32,7 +32,7 @@ install: uninstall
 	pip3 install . 
 
 uninstall:
-	pip3 uninstall rabbit
+	pip3 uninstall modulename
 
 run:
 	python3 -m rabbit eat -c 2

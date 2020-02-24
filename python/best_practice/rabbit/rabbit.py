@@ -11,12 +11,12 @@ logger = logging.getLogger(__name__)
 import sys
 
 def feed(count):
-    print("-------------",count)
+    logger.info(f"args {count}")
     return count * 2
 
 def main(args):
-    logger.info("hello")
-    feed(args.count)
+    ret = feed(args.count)
+    logger.debug(f'feed({args.count})={ret}')
 
 def entry_point():
     parser = createParse()

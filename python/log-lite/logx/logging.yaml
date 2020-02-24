@@ -15,7 +15,6 @@ handlers:
 
     colored:
         class: logx.ColoredHandler
-        formatter: standard
 
 root:
     level: DEBUG
@@ -25,5 +24,5 @@ root:
 loggers:
     logx:
         level: DEBUG
-        handlers: [console]
+        handlers: [colored,console]
         propagate: no

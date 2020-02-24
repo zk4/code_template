@@ -1,5 +1,4 @@
 from logging import Handler
-import logging
 
 class color:
     W  = '\033[0m'  # white (normal)

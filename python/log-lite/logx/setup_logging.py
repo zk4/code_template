@@ -4,6 +4,7 @@ import yaml
 import logging.config
 import logging
 
+logger = logging.getLogger(__name__)
 def setup_logging(default_path='logging.yaml', default_level=logging.DEBUG, env_key='LOG_CFG'):
     mydir = os.path.dirname(os.path.abspath(__file__))
     path = default_path

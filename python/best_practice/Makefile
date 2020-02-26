@@ -31,13 +31,16 @@ install: uninstall
 	pip3 install . 
 
 uninstall:
-	pip3 uninstall modulename
+	pip3 uninstall  -y rabbit
 
 main:
 	python3 main.py eat -c 2
 
 run:
 	python3 -m rabbit eat -c 2
+
+wrun:
+	watchexec -ce py 'python3 -m rabbit eat -c 2'
 
 all: rm uninstall install run 
 
@@ -72,7 +75,9 @@ env-create:
 	python3 -m venv env
 
 env: env-create
-	. env/bin/activate
 	pip3 install -r requirements.txt
 
-
+source: 
+	echo "you need to manully source it"
+	echo ". env/bin/activate"
+	. env/bin/activate

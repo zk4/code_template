@@ -59,7 +59,7 @@ upload-to-prod: rm freeze
 	twine upload dist/*
 
 
-freeze:
+freeze: auto_version
 	# pipreqs will find the module the project really depneds
 	pipreqs . --force
 
@@ -81,3 +81,6 @@ source:
 	echo "you need to manully source it"
 	echo ". env/bin/activate"
 	. env/bin/activate
+
+auto_version:
+	python version.py

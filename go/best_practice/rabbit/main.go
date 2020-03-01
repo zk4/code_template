@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
@@ -27,8 +26,8 @@ func main() {
 	if err != nil {
 		// In case of error print error and print usage
 		// This can also be done by passing -h or --help flags
-		fmt.Print(parser.Usage(err))
+		log.Print(parser.Usage(err))
 	}
 	// Finally print the collected string
-	fmt.Println(*s)
+	log.Println(*s)
 }

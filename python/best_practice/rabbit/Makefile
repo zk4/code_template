@@ -59,20 +59,21 @@ upload-to-prod: rm freeze
 	twine upload dist/*
 
 
-freeze: auto_version
+freeze-only: auto_version
 	# pipreqs will find the module the project really depneds
+	# Don`t use this !
 	pipreqs . --force
 
-freeze-global:
+freeze: auto_version
 	#  pip3 will find all the module not belong to standard  library
 	pip3 freeze > requirements.txt
 
 
 env-rm:
-	rm -rdf env
+	rm -rdf venv
 
 env-create: 
-	python3 -m venv env
+	python3 -m venv venv
 
 env: env-create
 	pip3 install -r requirements.txt
@@ -80,7 +81,7 @@ env: env-create
 source: 
 	echo "you need to manully source it"
 	echo ". env/bin/activate"
-	. env/bin/activate
+	. venv/bin/activate
 
 auto_version:
 	python version.py

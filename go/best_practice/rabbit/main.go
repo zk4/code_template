@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
 	_ "net/http/pprof"
 	"os"
 
@@ -9,6 +11,13 @@ import (
 )
 
 func main() {
+
+	go func() {
+		log.Println(http.ListenAndServe("0.0.0.0:8005", nil))
+	}()
+	log.SetFlags(log.Ltime | log.Lshortfile)
+	log.Println("hello,golang log")
+
 	// Create new parser object
 	parser := argparse.NewParser("print", "Prints provided string to stdout")
 	// Create string flag
@@ -23,4 +32,3 @@ func main() {
 	// Finally print the collected string
 	fmt.Println(*s)
 }
-

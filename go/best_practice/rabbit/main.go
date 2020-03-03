@@ -14,6 +14,7 @@ func main() {
 	go func() {
 		log.Println(http.ListenAndServe("0.0.0.0:8005", nil))
 	}()
+
 	log.SetFlags(log.Ltime | log.Lshortfile)
 	log.Println("hello,golang log")
 
@@ -31,3 +32,4 @@ func main() {
 	// Finally print the collected string
 	log.Println(*s)
 }
+

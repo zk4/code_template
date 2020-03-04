@@ -28,3 +28,6 @@ install:
 	@echo "install the package into the local repository, for use as a dependency in other projects locally."
 	mvn install
 
+
+clean:
+	mvn clean

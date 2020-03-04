@@ -3,10 +3,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>com.zk</groupId>
   <artifactId>rabbit</artifactId>
   <version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
   <name>rabbit</name>
   <!-- FIXME change it to the project's website -->
@@ -69,6 +69,25 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+							<!-- Make this jar executable -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<!-- DO NOT include log4j.properties file in your Jar, cause log4j.properties may conflict when mupltipal project have the same . Load it like this -->
+						<!-- java -jar -Dlog4j.configuration=file:/full_path/log4j.properties target/dateutils.jar -->
+
+						<!-- <excludes> -->
+						<!-- <exclude>**/log4j.properties</exclude> -->
+						<!-- </excludes> -->
+						<archive>
+						<manifest>
+							<!-- Jar file entry point -->
+							<mainClass>com.zk.App</mainClass>
+						</manifest>
+						</archive>
+					</configuration>
+				</plugin>
       </plugins>
     </pluginManagement>
   </build>

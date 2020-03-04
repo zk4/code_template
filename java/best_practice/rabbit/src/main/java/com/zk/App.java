@@ -13,6 +13,6 @@ public class App
     public static void main( String[] args )
     {
 			  logger.info("Hello from Logback here baby!");
-        System.out.println( "Hello rabbit..!" );
+        System.out.println( "Hello rabbit..! godokj" );
     }
 }

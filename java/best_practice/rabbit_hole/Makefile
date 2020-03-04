@@ -13,13 +13,9 @@ test:
 run: run_one_jar
 
 run_one_jar:
-	mvn assembly:assembly -DdescriptorId=jar-with-dependencies
-	java -jar target/*.jar
-
-run_jar_with_lib:
-	mvn clean package
-	java -jar target/Crunchify/*.jar
-
+	mvn clean install
+	cd rabbit && mvn assembly:assembly -DdescriptorId=jar-with-dependencies
+	cd rabbit && java -jar target/*.jar
 
 wrun:
 	watchexec -rce java "make run"

@@ -16,3 +16,7 @@ run:
 run_one_jar:
 	mvn clean assembly:assembly -DdescriptorId=jar-with-dependencies
 	java -jar target/*.jar
+
+run_jar_with_lib:
+	mvn clean package
+	java -jar target/Crunchify/*.jar

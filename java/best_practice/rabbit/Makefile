@@ -10,5 +10,9 @@ test:
 	mvn test
 
 run:
-	mvn compile
+	mvn clean package
+	java -jar target/Crunchify/App.jar
 
+run_one_jar:
+	mvn clean assembly:assembly -DdescriptorId=jar-with-dependencies
+	java -jar target/*.jar

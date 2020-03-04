@@ -4,19 +4,27 @@
 
 
 package:
+	@echo "take the compiled code and package it in its distributable format, such as a JAR."
 	mvn package
 
 test:
 	mvn test
 
-run:
-	mvn clean package
-	java -jar target/Crunchify/App.jar
+run: run_one_jar
 
 run_one_jar:
-	mvn clean assembly:assembly -DdescriptorId=jar-with-dependencies
+	mvn assembly:assembly -DdescriptorId=jar-with-dependencies
 	java -jar target/*.jar
 
 run_jar_with_lib:
 	mvn clean package
 	java -jar target/Crunchify/*.jar
+
+
+wrun:
+	watchexec -rce java "make run"
+
+install:
+	@echo "install the package into the local repository, for use as a dependency in other projects locally."
+	mvn install
+

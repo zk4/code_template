@@ -9,7 +9,7 @@
         </layout>
     </appender>
 
-    <logger name="com.mkyong" level="debug" additivity="false">
+    <logger name="com.zk" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
 

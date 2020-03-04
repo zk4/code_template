@@ -12,7 +12,7 @@ public class App
 	  private static final Logger logger = LoggerFactory.getLogger(App.class);
     public static void main( String[] args )
     {
-			  logger.debug("Hello from Logback");
-        System.out.println( "Hello rabbit!" );
+			  logger.info("Hello from Logback here baby!");
+        System.out.println( "Hello rabbit..!" );
     }
 }

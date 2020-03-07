@@ -14,7 +14,7 @@ handlers:
         formatter: standard
 
     colored:
-        class: rabbit.logx.ColoredHandler
+        class: bestpractice.logx.ColoredHandler
 
 root:
     level: DEBUG

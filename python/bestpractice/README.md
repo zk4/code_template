@@ -1,22 +1,22 @@
 # intro
-suppose you want to make a comand line tool called rabbit.
+suppose you want to make a comand line tool called bestpractice.
 it accept integer as numbers
 ouput carrots we need to feed
 ```
 ex:
-	cmd> rabbit 2 
+	cmd> bestpractice 2 
 	ouput: 4
 ```
 
 we can get the output by two ways:
 - command line
 	```bash
-	 rabbit  2
+	 bestpractice  2
 	```
 
 - call python moudle 
   ``` bash
-  python -m rabbit 2
+  python -m bestpractice 2
   ```
 
 
@@ -39,7 +39,7 @@ run `make test`
 `make main` will run in normal mode
 
 
-You can see that `main.py` and `rabbit/__main__.py` are the same  content file.
+You can see that `main.py` and `bestpractice/__main__.py` are the same  content file.
 
 why do we need `main.py` ? 
 It is eay to make an  entry in IDE , like intellij.
@@ -47,7 +47,7 @@ It is eay to make an  entry in IDE , like intellij.
 
 Could I just use `__main__.py` to run  like this?
 ``` bash
-python rabbit/__main__.py
+python bestpractice/__main__.py
 ```
 You cound not.
 
@@ -63,9 +63,9 @@ top-level package is the same as main.py, aka func
 top-level package is the folder where you run this command from
 ```
 
-So , why `rabbit/__main__.py` does not work?
+So , why `bestpractice/__main__.py` does not work?
 
-because top-level package is rabbit now.
+because top-level package is bestpractice now.
 
 
 ## logging 

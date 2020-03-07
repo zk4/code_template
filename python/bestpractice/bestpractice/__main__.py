@@ -1,4 +1,4 @@
-from .rabbit import entry_point
+from .bestpractice import entry_point
 
 if __name__ == '__main__':
     entry_point()

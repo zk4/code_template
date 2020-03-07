@@ -1,6 +1,6 @@
 
 import pytest
-from rabbit import main,createParse
+from bestpractice import main,createParse
 
 @pytest.fixture
 def parser():

@@ -1,4 +1,4 @@
-from .rabbit import (entry_point,
+from .bestpractice import (entry_point,
                      main,
                      createParse)
 

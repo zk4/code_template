@@ -20,27 +20,27 @@ test: rm
 coverage-html:
 	# --cov where you want to cover
 	#  tests  where your test code is 
-	pytest --cov=rabbit/ --cov-report=html tests/
+	pytest --cov=bestpractice/ --cov-report=html tests/
 	open htmlcov/index.html
 
 coverage:
-	pytest --cov=rabbit/ tests/
+	pytest --cov=bestpractice/ tests/
 
 
 install: uninstall
 	pip3 install . 
 
 uninstall:
-	pip3 uninstall  -y rabbit
+	pip3 uninstall  -y bestpractice
 
 main:
 	python3 main.py eat -c 2
 
 run:
-	python3 -m rabbit eat -c 2
+	python3 -m bestpractice eat -c 2
 
 wrun:
-	watchexec -ce py 'python3 -m rabbit eat -c 2'
+	watchexec -ce py 'python3 -m bestpractice eat -c 2'
 
 all: rm uninstall install run 
 

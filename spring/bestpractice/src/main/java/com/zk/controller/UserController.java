@@ -5,6 +5,8 @@ import com.zk.result.Result;
 import com.zk.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 public class UserController {
 
@@ -22,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public Result<User> createUser(@RequestBody User user){
+    public Result<User> createUser(@Valid @RequestBody User user){
         Result<User> success = Result.success(userService.createUser(user));
         return success;
     }

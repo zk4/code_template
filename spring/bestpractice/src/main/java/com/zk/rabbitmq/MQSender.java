@@ -1,5 +1,6 @@
 package com.zk.rabbitmq;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.zk.redis.RedisService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,26 +18,26 @@ public class MQSender {
 	@Autowired
 	AmqpTemplate amqpTemplate ;
 
-	public void send(Object message) {
+	public void send(Object message) throws JsonProcessingException {
 		String msg = RedisService.beanToString(message);
 		log.info("send message:"+msg);
 		amqpTemplate.convertAndSend(MQConfig.QUEUE, msg);
 	}
 
-	public void sendTopic(Object message) {
+	public void sendTopic(Object message) throws JsonProcessingException {
 		String msg = RedisService.beanToString(message);
 		log.info("send topic message:"+msg);
 		amqpTemplate.convertAndSend(MQConfig.TOPIC_EXCHANGE, "topic.key1", msg+"1");
 		amqpTemplate.convertAndSend(MQConfig.TOPIC_EXCHANGE, "topic.key2", msg+"2");
 	}
 
-	public void sendFanout(Object message) {
+	public void sendFanout(Object message) throws JsonProcessingException {
 		String msg = RedisService.beanToString(message);
 		log.info("send fanout message:"+msg);
 		amqpTemplate.convertAndSend(MQConfig.FANOUT_EXCHANGE, "", msg);
 	}
 
-	public void sendHeader(Object message) {
+	public void sendHeader(Object message) throws JsonProcessingException {
 		String msg = RedisService.beanToString(message);
 		log.info("send fanout message:"+msg);
 		MessageProperties properties = new MessageProperties();

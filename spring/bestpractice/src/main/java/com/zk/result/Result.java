@@ -5,7 +5,10 @@ public class Result<T> {
 	private int code;
 	private String msg;
 	private T data;
-	
+
+	public Result() {
+	}
+
 	/**
 	 *  成功时候的调用
 	 * */

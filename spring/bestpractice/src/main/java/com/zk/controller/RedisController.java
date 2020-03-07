@@ -1,5 +1,6 @@
 package com.zk.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.zk.entity.User;
 import com.zk.redis.RedisService;
 import com.zk.redis.UserKey;
@@ -7,6 +8,8 @@ import com.zk.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 
 @Controller
@@ -22,14 +25,14 @@ public class RedisController {
 
     @RequestMapping("/get/{id}")
     @ResponseBody
-    public Result<User> redisGet(@PathVariable Integer id) {
+    public Result<User> redisGet(@PathVariable Integer id) throws IOException {
     	User  user  = redisService.get(UserKey.getById, ""+id, User.class);
         return Result.success(user);
     }
     
     @PostMapping("/set")
     @ResponseBody
-    public Result<Boolean> redisSet(@RequestBody  User user) {
+    public Result<Boolean> redisSet(@RequestBody  User user) throws JsonProcessingException {
     	//User user  = new User();
     	//user.setId(1);
     	//user.setName("zk");

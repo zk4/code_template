@@ -26,4 +26,9 @@ public class UserService {
 		} else
 			return user;
 	}
+
+    public User createUser(User user) {
+		return userRepo.createUser(user);
+
+    }
 }

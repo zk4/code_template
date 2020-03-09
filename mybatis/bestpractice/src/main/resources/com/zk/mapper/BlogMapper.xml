@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zk.mapper.BlogMapper">
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>
+    <select id="selectBlog" resultType="com.zk.entity.Blog">
+    select id,name,author_name from Blog where id = ${id}
+  </select>
+
+    <!--自动将 id 写入 Blog id-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    insert into Blog values (null,#{name},#{authorName});
+    </insert>
+
+
+    <select id="selectBlogs" resultType="com.zk.entity.Blog">
+    select id,name,author_name from Blog
+    </select>
+
+    <select id="selectBlogsInMap" resultType="com.zk.entity.Blog">
+      select id,name,author_name from Blog
+    </select>
+
+    <!--注意这里只能用 arg0,不能用 id, 也只能用 arg1, 不能用 name-->
+    <select id="selectBlogsByIdAndName" resultType="com.zk.entity.Blog">
+      select id,name,author_name from Blog where id =#{arg0} and name =#{arg1}
+    </select>
+
+    <select id="selectBlogsByIdAndName2" resultType="com.zk.entity.Blog">
+      select id,name,author_name from Blog where id =#{id} and name =#{name}
+    </select>
+
+    <select id="selectBlogsByMap" resultType="com.zk.entity.Blog">
+      select id,name,author_name from Blog where id =#{id} and name =#{name}
+    </select>
+    <!--<select id="selectBlogsInMap" resultType="com.zk.entity.Blog">-->
+    <select id="selectBlogsInMap2" resultType="java.util.HashMap">
+    select id,name,author_name from Blog
+    </select>
+
+    <!--public boolean deleleteBlog(String id);-->
+    <delete id="deleleteBlog">
+    delete from  Blog where id=${id}
+    </delete>
+
+    <!--public boolean updateBlog(Blog blog);-->
+    <update id="updateBlog">
+      update  Blog   set name=#{name}, author_name=#{authorName} where id=#{id}
+    </update>
+
+    <!--public Integer updateBlogReturnEffectiveLRow(Blog blog);-->
+    <update id="updateBlogReturnEffectiveLRow">
+        update Blog
+        <!--set标签 可以去除多余的逗号-->
+        <set>
+            <if test="name!=null and name !='' ">
+                name=#{name},
+            </if>
+            <if test="authorName!=null and authorName !='' ">
+                author_name=#{authorName}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+
+    <resultMap id="blogmap" type="com.zk.entity.Blog">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="author_name" property="authorName"/>
+
+        <!--
+        collection 会映射到集合
+        ofType 对应的是 List 里的类型
+        -->
+        <collection property="articalList" ofType="com.zk.entity.Artical">
+            <id column="aid" property="aid"/>
+            <result column="content" property="content"/>
+            <!--<result column="author_name" property="authorName"/>-->
+        </collection>
+    </resultMap>
+
+
+    <select id="selectBlogOne2Many" resultMap="blogmap">
+      select * from Blog b left join artical a on a.bid =b.id where b.id =#{id}
+    </select>
+
+
+    <!--
+    trim:
+    prefix: 在 sql 前加入内容
+    suffix: 在 sql 后加入内容
+    prefixOverrides: 去掉 sql 前的某段内容
+    suffixOverrides: 去掉 sql 后的某段内容
+    -->
+
+    <select id="selectBlogsByArgs" resultType="com.zk.entity.Blog">
+        select * from Blog
+        <trim prefix="where" prefixOverrides="and" suffixOverrides="and|or">
+            <if test="id!=null">
+                id =#{id} and
+            </if>
+            <if test="name!=null">
+                name =#{name} or
+            </if>
+            <if test="authorName!=null and authorName!=''">
+                author_name =#{authorName}
+            </if>
+        </trim>
+
+    </select>
+</mapper>

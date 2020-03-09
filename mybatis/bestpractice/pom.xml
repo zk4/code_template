@@ -33,11 +33,65 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis</artifactId>
+          <version>3.5.3</version>
+      </dependency>
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.47</version>
+      </dependency>
+      <dependency>
+          <groupId>net.sf.ehcache</groupId>
+          <artifactId>ehcache-core</artifactId>
+          <version>2.6.11</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.mybatis.caches</groupId>
+          <artifactId>mybatis-ehcache</artifactId>
+          <version>1.1.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.github.pagehelper</groupId>
+          <artifactId>pagehelper</artifactId>
+          <version>5.1.10</version>
+      </dependency>
   </dependencies>
 
   <build>
-    
     <plugins>
+        <!--generate mybatis java bean, xml, java mapper-->
+        <plugin>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-maven-plugin</artifactId>
+            <version>1.4.0</version>
+            <executions>
+                <execution>
+                    <id>Generate MyBatis Artifacts</id>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                </execution>
+            </executions>
+
+            <dependencies>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>5.1.47</version>
+                </dependency>
+            </dependencies>
+
+            <configuration>
+                <overwrite>true</overwrite>
+            </configuration>
+        </plugin>
+
+
       <!--package all lib into one jar file -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -88,8 +142,12 @@
 				</executions>
 			</plugin>
 			<plugin>
+
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+
+
+
 				<executions>
 					<execution>
 						<id>copy-dependencies</id>
@@ -105,6 +163,10 @@
 						</configuration>
 					</execution>
 				</executions>
+                <configuration>
+                    <verbose>true</verbose>
+
+                </configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

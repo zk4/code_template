@@ -8,9 +8,6 @@ package:
 	mvn package
 
 test:
-	./scripts/startRedis.sh
-	./scripts/startRabbitMQ.sh
-	
 	mvn test
 
 run: run_one_jar
@@ -37,3 +34,6 @@ clean:
 
 effective_pom:
 	mvn help:effective-pom
+
+gen_code:
+	mvn mybatis-generator:generate

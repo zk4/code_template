@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!--Auto convert databse underscore to java camelcase-->
+        <setting name="mapUnderscoreToCamelCase" value="true"></setting>
+
+        <!--懒加载,下面两个都要设置-->
+        <setting name="lazyLoadingEnabled" value="true"></setting>
+        <setting name="aggressiveLazyLoading" value="false"></setting>
+        <setting name="cacheEnabled" value="true"></setting>
+    </settings>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+    <environments default="development">
+        <environment id="development">
+            <!--MANAGED: 如果是 spring ,这里应该改成 MANAGED , 让 spring 管理事务-->
+            <!--JDBC: 纯手动管理, 增删改 事务需要手动管理-->
+            <transactionManager type="JDBC"/>
+            <!--默认启用了 mybatis 的连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <!--allowMultiQueries 允许一次提交多行语句, 经常用在批量 update 上.-->
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/ssm?allowMultiQueries=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--一个一个的映射-->
+        <!--<mapper resource="mapper/BlogMapper.xml"/>-->
+
+        <!--映射文件夹-->
+        <!--注意! 如果这样写,得与 java 的映射文件在同一包名下, 打包时,xml 与 java 映射就在一个文件了,见 target-->
+        <package name="com.zk.mapper"></package>
+    </mappers>
+</configuration>

@@ -91,18 +91,22 @@ void prepareData(){
     GLuint vertex_buffer = 0;
     glGenBuffers( 1, &vertex_buffer );
     glBindBuffer( GL_ARRAY_BUFFER, vertex_buffer );
-    Vector3f Vertices[3];
-    Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);
-    Vertices[1] = Vector3f(1.0f, -1.0f, 0.0f);
-    Vertices[2] = Vector3f(0.0f, 1.0f, 0.0f);
+    Vector3f Vertices[4];
+		Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);
+		Vertices[1] = Vector3f(0.0f, -1.0f, 1.0f);
+		Vertices[2] = Vector3f(1.0f, -1.0f, 0.0f);
+		Vertices[3] = Vector3f(0.0f, 1.0f, 0.0f);
 
 		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
 
 		// use index 
-    GLuint index_buffer = 0;
-    glGenBuffers( 1, &index_buffer );
-    glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, index_buffer );
-    unsigned int indexes[] = { 0,1,2 };
+    GLuint IBO = 0;
+    unsigned int indexes[] = {   0, 3, 1,
+																 1, 3, 2,
+																 2, 3, 0,
+																 0, 1, 2 };
+    glGenBuffers( 1, &IBO );
+    glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, IBO );
     glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof(indexes), indexes, GL_STATIC_DRAW );
 
     glEnableVertexAttribArray( 0 );
@@ -114,24 +118,25 @@ void renderScene(GLFWwindow* window){
     while( !glfwWindowShouldClose(window) )
     {
         glClearColor( 0, 0, 0, 0 );
-        /* glClear( GL_COLOR_BUFFER_BIT ); */
+        glClear( GL_COLOR_BUFFER_BIT );
 
     		static float Scale = 0.0f;
-				Scale += 0.001f;
+				Scale += 0.1f;
 
 				Matrix4f World;
 
-			World.m[0][0]=1; 					 World.m[0][1]=0.0f;        World.m[0][2]=0.0f;        World.m[0][3]=0.0f;
-			World.m[1][0]=0.0f;        World.m[1][1]=1          ; World.m[1][2]=0.0f;        World.m[1][3]=0.0f;
-			World.m[2][0]=0.0f;        World.m[2][1]=0.0f;        World.m[2][2]=1          ; World.m[2][3]=0.0f;
-			World.m[3][0]=0.0f;        World.m[3][1]=0.0f;        World.m[3][2]=0.0f;        World.m[3][3]=1.0f;
+    World.m[0][0] = cosf(Scale); World.m[0][1] = 0.0f; World.m[0][2] = -sinf(Scale); World.m[0][3] = 0.0f;
+    World.m[1][0] = 0.0;         World.m[1][1] = 1.0f; World.m[1][2] = 0.0f        ; World.m[1][3] = 0.0f;
+    World.m[2][0] = sinf(Scale); World.m[2][1] = 0.0f; World.m[2][2] = cosf(Scale) ; World.m[2][3] = 0.0f;
+    World.m[3][0] = 0.0f;        World.m[3][1] = 0.0f; World.m[3][2] = 0.0f        ; World.m[3][3] = 1.0f;
+
 
     		GLuint gWorldLocation = glGetUniformLocation(program, "gWorld");
 				glUniformMatrix4fv(gWorldLocation, 1, GL_TRUE, &World.m[0][0]);
 
         glUseProgram( program );
         glBindVertexArray( VAO );
-        glDrawElements( GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0 );
+        glDrawElements( GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0 );
         glBindVertexArray( 0 );
 
         glfwSwapBuffers( window );

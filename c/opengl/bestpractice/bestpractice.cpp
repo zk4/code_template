@@ -8,6 +8,8 @@
 #include "pipeline.h"
 using namespace std;
 
+#define WINDOW_WIDTH 640
+#define WINDOW_HEIGHT 480
 
 void CheckStatus( GLuint obj )
 {
@@ -125,9 +127,9 @@ void renderScene(GLFWwindow* window){
 				Scale += 0.01f;
 
 				Pipeline p;
-				/* p.Scale(sinf(Scale * 0.1f), sinf(Scale * 0.1f), sinf(Scale * 0.1f)); */
-				p.WorldPos(sinf(Scale), 0.0f, 0.0f);
-				p.Rotate(sinf(Scale) * 90.0f, sinf(Scale) * 90.0f, sinf(Scale) * 90.0f);
+				p.Rotate(0.0f, Scale, 0.0f);
+				p.WorldPos(0.0f, 0.0f, 5.0f);
+				p.SetPerspectiveProj(30.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 1.0f, 100.0f);
 
     		GLuint gWorldLocation = glGetUniformLocation(program, "gWorld");
 				glUniformMatrix4fv(gWorldLocation, 1, GL_TRUE, (const GLfloat*)p.GetTrans());
@@ -176,7 +178,7 @@ int main( int argc, char** argv )
     glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
     glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
 
-    GLFWwindow* window = glfwCreateWindow( 640, 480, "bestpractice", NULL, NULL );
+    GLFWwindow* window = glfwCreateWindow(WINDOW_WIDTH , WINDOW_HEIGHT, "bestpractice", NULL, NULL );
     if( !window )
     {
         cerr << "Error on window creating" << endl;

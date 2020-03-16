@@ -15,3 +15,7 @@ out: bestpractice.c
 	$(CC) $(CFLAGS) $(HEAD) $(LIB) $(FRAMEWORK) *.c -o $@
 
 
+dev:
+	watchexec -rce c "make"
+
+

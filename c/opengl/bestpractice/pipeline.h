@@ -1,5 +1,4 @@
 /*
-
 	Copyright 2010 Etay Meiri
 
     This program is free software: you can redistribute it and/or modify
@@ -61,14 +60,16 @@ public:
         m_persProj.zFar   = zFar;
     }
 
+    void SetCamera(const Vector3f& Pos, const Vector3f& Target, const Vector3f& Up)
+    {
+        m_camera.Pos = Pos;
+        m_camera.Target = Target;
+        m_camera.Up = Up;
+    }
+
     const Matrix4f* GetTrans();
 
 private:
-    void InitScaleTransform(Matrix4f& m) const;
-    void InitRotateTransform(Matrix4f& m) const;
-    void InitTranslationTransform(Matrix4f& m) const;
-    void InitPerspectiveProj(Matrix4f& m) const;
-
     Vector3f m_scale;
     Vector3f m_worldPos;
     Vector3f m_rotateInfo;
@@ -80,6 +81,12 @@ private:
         float zNear;
         float zFar;
     } m_persProj;
+
+    struct {
+        Vector3f Pos;
+        Vector3f Target;
+        Vector3f Up;
+    } m_camera;
 
     Matrix4f m_transformation;
 };

@@ -11,11 +11,11 @@ LIB+=-I/usr/local/Cellar/glew/2.1.0/include -L/usr/local/Cellar/glew/2.1.0/lib -
 default: out
 	./out
 
-out: bestpractice.c
-	$(CC) $(CFLAGS) $(HEAD) $(LIB) $(FRAMEWORK) *.c -o $@
+out: bestpractice.cpp
+	$(CC) $(CFLAGS) $(HEAD) $(LIB) $(FRAMEWORK) *.cpp -o $@
 
 
 dev:
-	watchexec -rce c "make"
+	watchexec -rce cpp "make"
 
 

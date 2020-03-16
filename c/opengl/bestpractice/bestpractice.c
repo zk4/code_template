@@ -59,21 +59,24 @@ void initShader()
     const char* vert = GLSL
     (
         410 core,
-        layout( location = 0 ) in vec2 position;
+        layout( location = 0 ) in vec3 position;
 				uniform mat4 gWorld;                                                             
+        out vec4 Color;
         void main()
         {
-            gl_Position = gWorld * vec4( position, 0.0, 1.0 );
+            gl_Position = gWorld * vec4(position  , 1.0);
+    				Color = vec4(clamp(position, 0.0, 1.0), 1.0);
         }
     );
 
     const char* frag = GLSL
     (
         410 core,
+				in vec4 Color;                                                                      
         out vec4 FragColor;
         void main()
         {
-            FragColor = vec4( 0.6, 1.0, 1.0, 1.0 );
+            FragColor = Color;
         }
     );
 
@@ -103,7 +106,7 @@ void prepareData(){
     glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof(indexes), indexes, GL_STATIC_DRAW );
 
     glEnableVertexAttribArray( 0 );
-    glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, 0, 0 );
+    glVertexAttribPointer( 0, sizeof(Vector3f)/sizeof(GL_FLOAT), GL_FLOAT, GL_FALSE, 0, 0 );
 		// cancel binding. good practice
     glBindVertexArray( 0 );
 }
@@ -111,16 +114,16 @@ void renderScene(GLFWwindow* window){
     while( !glfwWindowShouldClose(window) )
     {
         glClearColor( 0, 0, 0, 0 );
-        glClear( GL_COLOR_BUFFER_BIT );
+        /* glClear( GL_COLOR_BUFFER_BIT ); */
 
     		static float Scale = 0.0f;
 				Scale += 0.001f;
 
 				Matrix4f World;
 
-			World.m[0][0]=sinf(Scale); World.m[0][1]=0.0f;        World.m[0][2]=0.0f;        World.m[0][3]=0.0f;
-			World.m[1][0]=0.0f;        World.m[1][1]=sinf(Scale); World.m[1][2]=0.0f;        World.m[1][3]=0.0f;
-			World.m[2][0]=0.0f;        World.m[2][1]=0.0f;        World.m[2][2]=sinf(Scale); World.m[2][3]=0.0f;
+			World.m[0][0]=1; 					 World.m[0][1]=0.0f;        World.m[0][2]=0.0f;        World.m[0][3]=0.0f;
+			World.m[1][0]=0.0f;        World.m[1][1]=1          ; World.m[1][2]=0.0f;        World.m[1][3]=0.0f;
+			World.m[2][0]=0.0f;        World.m[2][1]=0.0f;        World.m[2][2]=1          ; World.m[2][3]=0.0f;
 			World.m[3][0]=0.0f;        World.m[3][1]=0.0f;        World.m[3][2]=0.0f;        World.m[3][3]=1.0f;
 
     		GLuint gWorldLocation = glGetUniformLocation(program, "gWorld");

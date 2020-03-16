@@ -1,9 +1,15 @@
 CC=clang++
 CFLAGS=-std=c++11 -stdlib=libc++ 
-default: bestpractice.out
-	./bestpractice.out
+FRAMEWORK=-framework CoreVideo -framework OpenGL -framework IOKit  -framework Cocoa -framework Carbon 
+HEAD=-I/usr/local/Cellar/glew/2.1.0/include
+LIB=-lglfw  -lGLEW 
+default: out
+	./out
 
-bestpractice.out: bestpractice.cpp
-	$(CC) $(CFLAGS) -lglfw -framework CoreVideo -framework OpenGL -framework IOKit -framework Cocoa  -L/usr/local/Cellar/glew/2.1.0/include -lGLEW -framework Carbon bestpractice.cpp -o bestpractice.out
+bestpractice.o: *.cpp
+	$(CC) $(CFLAGS) $(HEAD) $(LIB) $(FRAMEWORK) -c *.cpp
+
+out: bestpractice.o
+	$(CC) $(CFLAGS) $(HEAD) $(LIB) $(FRAMEWORK) *.cpp -o $@
 
 

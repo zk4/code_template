@@ -11,7 +11,7 @@ LIB+=-I/usr/local/Cellar/glew/2.1.0/include -L/usr/local/Cellar/glew/2.1.0/lib -
 default: out
 	./out
 
-out: bestpractice.cpp
+out: bestpractice.cpp pipeline.cpp
 	$(CC) $(CFLAGS) $(HEAD) $(LIB) $(FRAMEWORK) *.cpp -o $@
 
 

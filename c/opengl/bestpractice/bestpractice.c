@@ -1,8 +1,10 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <math.h>
 
 #include <vector>
 #include <iostream>
+#include "math_3d.h"
 using namespace std;
 
 
@@ -58,9 +60,10 @@ void initShader()
     (
         410 core,
         layout( location = 0 ) in vec2 position;
+				uniform mat4 gWorld;                                                             
         void main()
         {
-            gl_Position = vec4( position, 0.0, 1.0 );
+            gl_Position = gWorld * vec4( position, 0.0, 1.0 );
         }
     );
 
@@ -110,6 +113,19 @@ void renderScene(GLFWwindow* window){
     {
         glClearColor( 0, 0, 0, 0 );
         glClear( GL_COLOR_BUFFER_BIT );
+
+    		static float Scale = 0.0f;
+				Scale += 0.001f;
+
+				Matrix4f World;
+
+				World.m[0][0] = 1.0f; World.m[0][1] = 0.0f; World.m[0][2] = 0.0f; World.m[0][3] = sinf(Scale);
+				World.m[1][0] = 0.0f; World.m[1][1] = 1.0f; World.m[1][2] = 0.0f; World.m[1][3] = 0.0f;
+				World.m[2][0] = 0.0f; World.m[2][1] = 0.0f; World.m[2][2] = 1.0f; World.m[2][3] = 0.0f;
+				World.m[3][0] = 0.0f; World.m[3][1] = 0.0f; World.m[3][2] = 0.0f; World.m[3][3] = 1.0f;
+
+    		GLuint gWorldLocation = glGetUniformLocation(program, "gWorld");
+				glUniformMatrix4fv(gWorldLocation, 1, GL_TRUE, &World.m[0][0]);
 
         glUseProgram( program );
         glBindVertexArray( VAO );

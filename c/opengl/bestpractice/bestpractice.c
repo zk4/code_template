@@ -80,6 +80,7 @@ void initShader()
     program = LoadProgram( vert, NULL, frag );
 
 }
+
 void prepareData(){
     glGenVertexArrays( 1, &VAO );
     glBindVertexArray( VAO );
@@ -87,27 +88,23 @@ void prepareData(){
     GLuint vertex_buffer = 0;
     glGenBuffers( 1, &vertex_buffer );
     glBindBuffer( GL_ARRAY_BUFFER, vertex_buffer );
-    float data[] =
-    {
-        0.0f,0.8f,
-        -0.8f, 0.0f,
-        0.8f,0.0f
-    };
-    glBufferData( GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW );
+    Vector3f Vertices[3];
+    Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);
+    Vertices[1] = Vector3f(1.0f, -1.0f, 0.0f);
+    Vertices[2] = Vector3f(0.0f, 1.0f, 0.0f);
 
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+
+		// use index 
     GLuint index_buffer = 0;
     glGenBuffers( 1, &index_buffer );
     glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, index_buffer );
-    unsigned int indexes[] =
-    {
-        0,1,2
-    };
+    unsigned int indexes[] = { 0,1,2 };
     glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof(indexes), indexes, GL_STATIC_DRAW );
 
     glEnableVertexAttribArray( 0 );
-
     glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, 0, 0 );
-
+		// cancel binding. good practice
     glBindVertexArray( 0 );
 }
 void renderScene(GLFWwindow* window){

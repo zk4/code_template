@@ -20,13 +20,21 @@ module.exports = {
 				use: "babel-loader",
 			},
 			{
+        test: /\.(png|svg|jpg|gif)$/,
+				use:[
+					'file-loader'
+				]
+			},
+			{
 				test: /\.css$/,
 				use: ["style-loader", "css-loader"], // 注意排列顺序，执行顺序与排列顺序相反
 			},
 		],
 	},
 	plugins: [
+    // auto reload 
 		new webpack.HotModuleReplacementPlugin(),
+    // auto inject
 		new HtmlWebpackPlugin({ template: "./src/index.html" }),
 	],
 };

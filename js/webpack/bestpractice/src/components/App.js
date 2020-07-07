@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Icon from '../icon.png'
+import Icon from './icon.png';
 import './App.css';
 
 export default class App extends Component {

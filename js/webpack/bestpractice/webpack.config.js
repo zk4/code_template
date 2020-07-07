@@ -1,3 +1,5 @@
+
+const path = require('path');
 // 用于引用webpack内置插件
 const webpack = require("webpack");
 // 外部插件
@@ -21,6 +23,9 @@ module.exports = {
 			},
 			{
         test: /\.(png|svg|jpg|gif)$/,
+        include: [
+          path.resolve(__dirname, "src/components")
+        ],
 				use:[
 					'file-loader'
 				]

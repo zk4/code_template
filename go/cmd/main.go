@@ -7,10 +7,11 @@ import (
 	"os"
 
 	"github.com/akamensky/argparse"
+	"github.com/zk4/cmd/hello"
 )
 
 func main() {
-
+	hello.Hello()
 	go func() {
 		log.Println(http.ListenAndServe("0.0.0.0:8005", nil))
 	}()
@@ -32,4 +33,3 @@ func main() {
 	// Finally print the collected string
 	log.Println(*s)
 }
-

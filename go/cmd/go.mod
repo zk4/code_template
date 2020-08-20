@@ -1,4 +1,4 @@
-module github.com/Xuanwo/go-mod-intro
+module github.com/zk4/cmd
 
 go 1.13
 

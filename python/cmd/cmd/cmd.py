@@ -9,7 +9,9 @@ setup_logging()
 logger = logging.getLogger(__name__)
 
 import sys
+import pysnooper
 
+@pysnooper.snoop()
 def feed(count):
     logger.info(f"args {count}")
     return count * 2

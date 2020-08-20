@@ -1,6 +1,9 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
@@ -8,10 +11,26 @@ import (
 
 	"github.com/akamensky/argparse"
 	"github.com/zk4/cmd/hello"
+	"github.com/zk4/cmd/model"
 )
 
+func jsontest() {
+	msg, err := ioutil.ReadFile("./demo.json")
+	if err != nil {
+		return
+	}
+	e := model.Foo{}
+	if err := json.Unmarshal(msg, &e); err != nil {
+		panic(err)
+	}
+
+	fmt.Println(e.Name)
+}
 func main() {
+
+	jsontest()
 	hello.Hello()
+
 	go func() {
 		log.Println(http.ListenAndServe("0.0.0.0:8005", nil))
 	}()

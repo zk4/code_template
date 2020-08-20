@@ -26,6 +26,9 @@ profile:
 	echo "wait for 10 secs"
 	go tool pprof -http=:1234 http://localhost:8005/debug/pprof/profile\?seconds\=10
 
+create_struct_from_json:
+	mkdir model
+	cat demo.json | gojson -name=Foo -pkg model > ./model/model.go
 
 graph:
 	go mod graph

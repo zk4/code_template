@@ -23,6 +23,7 @@ clean:
 .PHONY: *.exe 
 
 main.exe: libmain.a libwork.a
+	gcc -S  main.cxx -o main.s
 	@$(CC) -L. -o $@ -lwork -lmain
 
 main2.exe: libmain.a libwork.a

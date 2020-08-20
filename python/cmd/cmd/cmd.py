@@ -11,15 +11,15 @@ logger = logging.getLogger(__name__)
 import sys
 import pysnooper
 
-@pysnooper.snoop()
 def feed(count):
     logger.info(f"args {count}")
     return count * 2
 
 def main(args):
     ret = feed(args.count)
-    logger.debug(f'feed({args.count})={ret}')
+    # logger.debug(f'feed({args.count})={ret}')
 
+@pysnooper.snoop()
 def entry_point():
     parser = createParse()
     mainArgs=parser.parse_args()

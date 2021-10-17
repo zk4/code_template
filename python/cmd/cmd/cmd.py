@@ -1,15 +1,8 @@
 #coding: utf-8
-from .logx import setup_logging
-import logging
+
+from loguru import logger
 import argparse
-
-# don`t remove this line
-setup_logging()
-
-logger = logging.getLogger(__name__)
-
 import sys
-import pysnooper
 
 def feed(count):
     logger.info(f"args {count}")
@@ -19,7 +12,6 @@ def main(args):
     ret = feed(args.count)
     # logger.debug(f'feed({args.count})={ret}')
 
-@pysnooper.snoop()
 def entry_point():
     parser = createParse()
     mainArgs=parser.parse_args()

@@ -14,7 +14,6 @@ def feed(count):
 
 def main(args):
     ret = feed(args.count)
-    # logger.debug(f'feed({args.count})={ret}')
 
 def entry_point():
     parser = createParse()

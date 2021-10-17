@@ -4,8 +4,12 @@ from loguru import logger
 import argparse
 import sys
 
+logger.level('DEBUG')
 def feed(count):
     logger.info(f"args {count}")
+    logger.debug("debug")
+    logger.critical("critical")
+    logger.error("error")
     return count * 2
 
 def main(args):

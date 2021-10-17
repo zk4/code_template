@@ -33,8 +33,8 @@ install: uninstall
 uninstall:
 	pip3 uninstall  -y cmd
 
-main:
-	python3 main.py eat -c 2
+# main:
+#   python3 main.py eat -c 2
 
 run:
 	python3 -m cmd eat -c 2

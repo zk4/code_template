@@ -1,6 +1,6 @@
 
 #  import pytest
-#  from cmd.cmd import main,createParse
+#  from cli.cli import main,createParse
 
 #  @pytest.fixture
 #  def parser():

@@ -27,7 +27,7 @@ def createParse():
     eat_parser = subparsers.add_parser('eat',formatter_class=argparse.ArgumentDefaultsHelpFormatter, description="",  help='sub command demo')
     eat_parser.add_argument('-c', '--count',type=int,required=False, help='carrots count', default="")  
     eat_parser.add_argument('-t', '--test', help='test questions', default=False, action='store_true') 
-    # eat_parser.add_argument("ids",  help="usage: cmd ids" )
+    # eat_parser.add_argument("ids",  help="usage: cli ids" )
     parser.add_argument('integers', metavar='N', type=str, nargs='*',
                         help='an integer for the accumulator')
 

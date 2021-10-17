@@ -1,22 +1,22 @@
 # intro
-suppose you want to make a comand line tool called cmd.
+suppose you want to make a comand line tool called cli.
 it accept integer as numbers
 ouput carrots we need to feed
 ```
 ex:
-	cmd> cmd 2 
+	cli> cli 2 
 	ouput: 4
 ```
 
 we can get the output by two ways:
 - command line
 	```bash
-	 cmd  2
+	 cli  2
 	```
 
 - call python moudle 
   ``` bash
-  python -m cmd 2
+  python -m cli 2
   ```
 
 
@@ -39,7 +39,7 @@ run `make test`
 `make main` will run in normal mode
 
 
-You can see that `main.py` and `cmd/__main__.py` are the same  content file.
+You can see that `main.py` and `cli/__main__.py` are the same  content file.
 
 why do we need `main.py` ? 
 It is eay to make an  entry in IDE , like intellij.
@@ -47,7 +47,7 @@ It is eay to make an  entry in IDE , like intellij.
 
 Could I just use `__main__.py` to run  like this?
 ``` bash
-python cmd/__main__.py
+python cli/__main__.py
 ```
 You cound not.
 
@@ -63,9 +63,9 @@ top-level package is the same as main.py, aka func
 top-level package is the folder where you run this command from
 ```
 
-So , why `cmd/__main__.py` does not work?
+So , why `cli/__main__.py` does not work?
 
-because top-level package is cmd now.
+because top-level package is cli now.
 
 
 ## logging 
@@ -79,7 +79,7 @@ use https://github.com/Delgan/loguru
   - your_module
 
 
-## packing module or cmd
+## packing module or cli
 
 ###  local 
 for quick test purpose

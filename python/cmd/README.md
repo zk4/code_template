@@ -69,9 +69,8 @@ because top-level package is cmd now.
 
 
 ## logging 
-  Always use logging for log print,don`t use `print`
-  logging config is controlled by `logging.yml`, which can control every module level
-  call `setup_logging` in main file (ra)
+system logging is so hard to use it right. 
+use https://github.com/Delgan/loguru
 
 ## make module
   update readmeput moudle in the folder parallel with logx folder.

@@ -1,3 +1,3 @@
 #!/bin/bash 
 
-pnpm  install
+proxychains4 pnpm install

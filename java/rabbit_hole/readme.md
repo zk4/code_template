@@ -26,7 +26,7 @@ cd member_service  && mvn test
 ``` bash
 # 必须安装到 .m2, mvn spring-boot:run 才找的到
 cd rabbit_hole  && mvn clean install
-cd web && mvn spring-boot:run
+cd rabbit && mvn spring-boot:run
 ```
 
 从根目录,指定模块

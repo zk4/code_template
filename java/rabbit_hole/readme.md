@@ -1,6 +1,15 @@
 
 此脚手架集成了测试,打包
 
+## coge 快速开始
+创建 member_service 多模块项目,
+``` bash
+coge java rabbit_hole rabbit:web hole:api rabbit_hole:member_service  @:member_service
+
+cd member_service  && mvn install
+cd web && mvn spring-boot:run
+```
+
 ## package for fat jar
 ``` sh
 cd rabbit_hole
@@ -96,3 +105,4 @@ rabbit/pom.xml
 ``` bash
 mvn  clean source:jar  deploy
 ```
+

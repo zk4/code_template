@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class MyController {
 
 
-	@PostMapping("/rabbitCount")
+	@PostMapping("/count")
 	public Integer hello(@RequestBody Req req){
-		return new Hole().countRabbit(req.a,req.b);
+		return new Hole().count(req.a,req.b);
 	}
 
 	static class Req {

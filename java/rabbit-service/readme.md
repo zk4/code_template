@@ -16,7 +16,7 @@
 创建 member_service 多模块项目
 ``` bash
 # 根据 coge  创建工程
-coge java rabbit_service  rabbit:member  @:member_service
+coge java rabbit-service  rabbit:member  @:member-service
 # 确定工程 OK
 cd member_service  && mvn test
 ```

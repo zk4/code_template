@@ -22,7 +22,7 @@ class MyControllerTest {
 		body.put("a", 2);
 		body.put("b", 3);
 
-		ResponseEntity<Integer> forEntity = rest.postForEntity("/rabbitCount",body, Integer.class);
+		ResponseEntity<Integer> forEntity = rest.postForEntity("/count",body, Integer.class);
 		Integer result = forEntity.getBody();
 		Assertions.assertEquals(5, result);
 	}

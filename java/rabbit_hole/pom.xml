@@ -8,66 +8,10 @@
     <packaging>pom</packaging>
     <name>rabbit_hole</name>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-boot.version>2.7.1</spring-boot.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-
-    <!--包下载配置-->
-    <!--<repositories>-->
-        <!--<repository>-->
-            <!--<id>zkty-center-public</id>-->
-            <!--<name>Public Repositories</name>-->
-            <!--<url>https://nexus.spacenx.cn/repository/center-public/</url>-->
-            <!--<snapshots>-->
-                <!--<updatePolicy>always</updatePolicy>-->
-                <!--<enabled>true</enabled>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
-    <!--</repositories>-->
-
-    <!--插件服务器配置-->
-    <!--<pluginRepositories>-->
-        <!--<pluginRepository>-->
-            <!--<id>zkty-center-public</id>-->
-            <!--<name>Public Repositories</name>-->
-            <!--<url>https://nexus.spacenx.cn/repository/center-public/</url>-->
-        <!--</pluginRepository>-->
-    <!--</pluginRepositories>-->
-
-    <!--上传服务器配置-->
-    <!--<distributionManagement>-->
-        <!--<repository>-->
-            <!--<id>zkty-center-releases</id>-->
-            <!--<name>zkty Center Releases</name>-->
-            <!--<url>https://nexus.spacenx.cn/repository/center-release/</url>-->
-        <!--</repository>-->
-        <!--<snapshotRepository>-->
-            <!--<id>zkty-center-snapshots</id>-->
-            <!--<name>zkty Center Snapshots</name>-->
-            <!--<url>https://nexus.spacenx.cn/repository/center-snapshot/</url>-->
-        <!--</snapshotRepository>-->
-    <!--</distributionManagement>-->
-
-
-    <!--统一版本管理-->
-    <!--<dependencyManagement>-->
-        <!--<dependencies>-->
-            <!--&lt;!&ndash; SpringBoot 依赖配置 &ndash;&gt;-->
-            <!--<dependency>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-dependencies</artifactId>-->
-                <!--<version>${spring-boot.version}</version>-->
-                <!--<type>pom</type>-->
-                <!--<scope>import</scope>-->
-            <!--</dependency>-->
-        <!--</dependencies>-->
-    <!--</dependencyManagement>-->
 
 
     <modules>
+        <module>parent</module>
         <module>rabbit</module>
         <module>hole</module>
     </modules>

@@ -6,8 +6,8 @@ package com.zk;
  */
 public class Hole {
 
-    public int countRabbit(){
-        return 4+8;
+    public int countRabbit(Integer a, Integer b){
+        return a+b;
     }
 
 

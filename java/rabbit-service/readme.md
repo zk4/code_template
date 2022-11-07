@@ -18,7 +18,7 @@
 # 根据 coge  创建工程
 coge java rabbit-service  rabbit:member  @:member-service
 # 确定工程 OK
-cd member_service  && mvn test
+cd member-service  && mvn install &&  mvn test
 ```
 
 ## 从命令启动 sprign-boot:run

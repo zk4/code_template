@@ -60,5 +60,10 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <dependencies>
+
+        <!--共享的包放在这-->
+
+    </dependencies>
 
 </project>

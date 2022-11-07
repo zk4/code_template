@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -24,41 +25,40 @@
     </properties>
 
     <!--包下载配置-->
-    <!--<repositories>-->
-    <!--<repository>-->
-    <!--<id>zkty-center-public</id>-->
-    <!--<name>Public Repositories</name>-->
-    <!--<url>https://nexus.spacenx.cn/repository/center-public/</url>-->
-    <!--<snapshots>-->
-    <!--<updatePolicy>always</updatePolicy>-->
-    <!--<enabled>true</enabled>-->
-    <!--</snapshots>-->
-    <!--</repository>-->
-    <!--</repositories>-->
+    <repositories>
+        <repository>
+            <id>x-center-public</id>
+            <name>Public Repositories</name>
+            <url>https://nexus.x.cn/repository/center-public/</url>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <!--插件服务器配置-->
-    <!--<pluginRepositories>-->
-    <!--<pluginRepository>-->
-    <!--<id>zkty-center-public</id>-->
-    <!--<name>Public Repositories</name>-->
-    <!--<url>https://nexus.spacenx.cn/repository/center-public/</url>-->
-    <!--</pluginRepository>-->
-    <!--</pluginRepositories>-->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>x-center-public</id>
+            <name>Public Repositories</name>
+            <url>https://nexus.x.cn/repository/center-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <!--上传服务器配置-->
-    <!--<distributionManagement>-->
-    <!--<repository>-->
-    <!--<id>zkty-center-releases</id>-->
-    <!--<name>zkty Center Releases</name>-->
-    <!--<url>https://nexus.spacenx.cn/repository/center-release/</url>-->
-    <!--</repository>-->
-    <!--<snapshotRepository>-->
-    <!--<id>zkty-center-snapshots</id>-->
-    <!--<name>zkty Center Snapshots</name>-->
-    <!--<url>https://nexus.spacenx.cn/repository/center-snapshot/</url>-->
-    <!--</snapshotRepository>-->
-    <!--</distributionManagement>-->
-
+    <distributionManagement>
+        <repository>
+            <id>x-center-releases</id>
+            <name>x Center Releases</name>
+            <url>https://nexus.x.cn/repository/center-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>x-center-snapshots</id>
+            <name>x Center Snapshots</name>
+            <url>https://nexus.x.cn/repository/center-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 
 </project>

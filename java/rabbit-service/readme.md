@@ -3,11 +3,11 @@
 
 ## 文件夹结构
 ```
-- parent
+- rabbit-shared
   - pom.xml (shared config)
-- rabbit
+- rabbit-app
   - pom.xml
-- hole
+- rabbit-lib
   - pom.xml
 - pom.xml  (only for module)
 ```
@@ -16,7 +16,7 @@
 创建 member_service 多模块项目
 ``` bash
 # 根据 coge  创建工程
-coge java rabbit_hole rabbit:web hole:api rabbit_hole:member_service  @:member_service
+coge java rabbit_service  rabbit:member  @:member_service
 # 确定工程 OK
 cd member_service  && mvn test
 ```
@@ -25,18 +25,17 @@ cd member_service  && mvn test
 从目标目录
 ``` bash
 # 必须安装到 .m2, mvn spring-boot:run 才找的到
-cd rabbit_hole  && mvn clean install
-cd rabbit && mvn spring-boot:run
+mvn clean install && cd rabbit-app && mvn spring-boot:run
 ```
 
 从根目录,指定模块
 ``` bash
-mvn clean install && mvn -pl rabbit spring-boot:run
+mvn clean install && mvn -pl rabbit-app spring-boot:run
 ```
 
 ## package for fat jar
 ``` sh
-cd rabbit_hole
+cd rabbit_service
 mvn clean package
 ```
 
@@ -62,7 +61,7 @@ parent/pom.xml
 
 ## fat jar 配置
 
-rabbit/pom.xml
+rabbit-app/pom.xml
 ``` xml
     <build>
         <plugins>
@@ -120,7 +119,7 @@ rabbit/pom.xml
 
 ## 打包上传
 ``` bash
-cd rabbit
+cd rabbit-app
 mvn clean source:jar  deploy
 ```
 

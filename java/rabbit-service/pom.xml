@@ -3,16 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zk</groupId>
-    <artifactId>rabbit_hole</artifactId>
+    <artifactId>rabbit-service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>rabbit_hole</name>
 
 
     <modules>
-        <module>parent</module>
-        <module>rabbit</module>
-        <module>hole</module>
+        <module>rabbit-shared</module>
+        <module>rabbit-app</module>
+        <module>rabbit-lib</module>
     </modules>
 
 

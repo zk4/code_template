@@ -24,7 +24,7 @@ cd member-service  && mvn install &&  mvn test
 ## 从命令启动 sprign-boot:run
 从目标目录
 ``` bash
-# 必须安装到 .m2, mvn spring-boot:run 才找的到
+# lib 必须安装到 .m2, mvn spring-boot:run 才找的到
 mvn clean install && cd rabbit-app && mvn spring-boot:run
 ```
 

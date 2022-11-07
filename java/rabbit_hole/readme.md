@@ -2,24 +2,25 @@
 此脚手架集成了测试,打包
 
 ## coge 快速开始
-创建 member_service 多模块项目,
+创建 member_service 多模块项目
 ``` bash
+# 根据 coge  创建工程
 coge java rabbit_hole rabbit:web hole:api rabbit_hole:member_service  @:member_service
-
-
+# 确定工程 OK
+cd member_service  && mvn test
+```
 
 ## 从命令启动 sprign-boot:run
-
 从目标目录
 ``` bash
 # 必须安装到 .m2, mvn spring-boot:run 才找的到
-cd member_service  && mvn install
+cd rabbit_hole  && mvn clean install
 cd web && mvn spring-boot:run
 ```
 
 从根目录,指定模块
 ``` bash
-mvn install && mvn -pl rabbit spring-boot:run
+mvn clean install && mvn -pl rabbit spring-boot:run
 ```
 
 ## package for fat jar

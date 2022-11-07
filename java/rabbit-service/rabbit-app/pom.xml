@@ -5,9 +5,9 @@
 
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.1</version>
+        <groupId>com.zk</groupId>
+        <artifactId>rabbit-service</artifactId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.zk</groupId>
@@ -20,11 +20,7 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>com.zk</groupId>
-            <artifactId>rabbit-shared</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+
 
         <dependency>
             <groupId>com.zk</groupId>

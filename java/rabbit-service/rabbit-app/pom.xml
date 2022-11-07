@@ -10,7 +10,7 @@
         <version>2.7.1</version>
     </parent>
 
-
+    <groupId>com.zk</groupId>
     <artifactId>rabbit-app</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -40,13 +40,8 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+ 
 
-
-        <dependency>
-            <groupId>com.zk</groupId>
-            <artifactId>hole</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
 

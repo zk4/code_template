@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: rabbit-app
+
+  cloud:
+    nacos:
+      config:
+        server-addr: smallmac.local:8848
+      discovery:
+        enabled: true
+        server-addr: smallmac.local:8848
+

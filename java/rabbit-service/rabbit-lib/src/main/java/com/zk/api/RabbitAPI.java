@@ -12,7 +12,7 @@ public interface RabbitAPI {
         String age;
     }
 
-    @PostMapping("/demo/list")
+    @PostMapping("/demo/feign")
     String demo(@RequestBody Req demoFeignQueryVO);
     
 }

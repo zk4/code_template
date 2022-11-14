@@ -1,6 +1,6 @@
 spring:
   application:
-    name: rabbit-app
+    name: rabbit-service
 
   cloud:
     nacos:

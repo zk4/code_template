@@ -1,7 +1,6 @@
 import useArrayStore from "../store";
-function Btn() {
+function Btn({index,v,children}) {
 	const { updateValue } = useArrayStore();
-
-	return <button onClick={() => updateValue(2, 4)}>Update Value</button>;
+	return <button onClick={() => updateValue(index, v)}>{children }</button>;
 }
 export default Btn;

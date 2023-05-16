@@ -1,6 +1,7 @@
 import "./App.css";
 import useArrayStore from "./store";
 import Btn from "./components/btn";
+import Timer from "./components/timer";
 
 function App() {
   const { arr, updateArr, updateValue } = useArrayStore();
@@ -13,6 +14,11 @@ function App() {
       <Btn index={3} v={"hello"}>
         update 3th vaule to hello
       </Btn>
+      <Timer interval={4}/>
+      <Timer/>
+      <Timer/>
+      <Timer/>
+      <Timer/>
       <ul>
         {arr.map((item, index) => {
           return <li key={index}>{item}</li>;

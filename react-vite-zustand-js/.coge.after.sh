@@ -1,4 +1,6 @@
 #!/bin/bash 
 
-pnpm i
+pnpm install
+
 vite
+

@@ -1,3 +1,5 @@
+USE the python -m venv --clear .pyenv  to generate a fresh env first!
+
 # intro
 suppose you want to make a comand line tool called cli.
 it accept integer as numbers

@@ -20,7 +20,6 @@ rm:
 	rm -rf .hypothesis
 	rm -rdf assets
 	
-
 test: 
 	$(SOURCE_ENV)
 	pytest -s -v  tests/

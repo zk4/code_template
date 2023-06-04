@@ -68,17 +68,11 @@ upload-to-prod: rm freeze
 	twine upload dist/*
 
 
-
 auto_version:
 	$(SOURCE_ENV) 
 	python3 version.py
 
-
-check_python_path: 
-	$(SOURCE_ENV) 
-	which python3 
-
-rm_env:
+venv_rm:
 	rm -rdf venv
 
 venv: rm_env

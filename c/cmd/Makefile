@@ -1,4 +1,4 @@
-
+.PHONY: *.exe 
 
 CC = g++
 OBJS = $(patsubst %.cxx, %.o, $(wildcard *.cxx))
@@ -19,8 +19,6 @@ clean:
 	rm -f *.a
 	rm -f *.o
 
-
-.PHONY: *.exe 
 
 main.exe: libmain.a libwork.a
 	gcc -S  main.cxx -o main.s

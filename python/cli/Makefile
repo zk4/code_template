@@ -74,7 +74,7 @@ auto_version:
 venv_rm:
 	rm -rdf venv
 
-venv: rm_env
+venv: venv_rm
 	python3 -m venv --clear venv
 	$(SOURCE_ENV)
 	pip install -r requirements.txt

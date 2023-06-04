@@ -1,2 +1,9 @@
+atomicwrites==1.4.1
+attrs==23.1.0
+loguru==0.7.0
+more-itertools==9.1.0
+packaging==23.1
+pluggy==0.13.1
+py==1.11.0
 pytest==5.2.1
-
+wcwidth==0.2.6

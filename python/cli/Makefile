@@ -22,7 +22,7 @@ rm:
 
 test:
 	$(SOURCE_ENV)
-	pytest -s -v  test/
+	python3 -m pytest
 
 coverage-html:
 	$(SOURCE_ENV)
@@ -33,7 +33,7 @@ coverage-html:
 
 coverage:
 	$(SOURCE_ENV)
-	pytest --cov=cli/ test/
+	python3 -m pytest --cov=cli/ 
 
 
 install: uninstall
@@ -78,6 +78,7 @@ venv: venv_rm
 	python3 -m venv --clear venv
 	$(SOURCE_ENV)
 	pip install -r requirements.txt
+
 
 requirements.txt:
 	$(SOURCE_ENV)

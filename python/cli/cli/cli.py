@@ -2,7 +2,8 @@
 
 from loguru import logger
 import argparse
-import sys
+from .module import submodule
+
 
 logger.level('DEBUG')
 def feed(count):
@@ -10,6 +11,7 @@ def feed(count):
     logger.debug("debug")
     logger.critical("critical")
     logger.error("error")
+    submodule.say()
     return count * 2
 
 def main(args):

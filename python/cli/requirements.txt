@@ -1,3 +1,2 @@
-pytest==5.2.1
-loguru==0.5.3
-
+loguru==0.7.0
+pytest==6.2.5

@@ -1,3 +1,10 @@
+.PHONY: test activate init requirements.txt
+
+# Indicates each line of command in target would run in one shell , 
+# only make file version >=3.8.2 support 
+.ONESHELL:
+
+SOURCE_ENV = . venv/bin/activate
 
 rm: 
 	find . -name '*.pyc' -exec rm -f {} +
@@ -13,43 +20,44 @@ rm:
 	rm -rf .hypothesis
 	rm -rdf assets
 	
-
-test: rm
+test: 
+	$(SOURCE_ENV)
 	pytest -s -v  tests/
 
 coverage-html:
+	$(SOURCE_ENV) 
 	# --cov where you want to cover
 	#  tests  where your test code is 
 	pytest --cov=cli/ --cov-report=html tests/
 	open htmlcov/index.html
 
 coverage:
+	$(SOURCE_ENV) 
 	pytest --cov=cli/ tests/
 
 
 install: uninstall
+	$(SOURCE_ENV) 
 	pip3 install . 
 
 uninstall:
+	$(SOURCE_ENV) 
 	pip3 uninstall  -y cli
 
-# main:
-#   python3 main.py eat -c 2
+main:
+	$(SOURCE_ENV) 
+	python3 main.py eat -c 2
 
 run:
+	$(SOURCE_ENV) 
 	python3 -m cli eat -c 2
 
 wrun:
+	$(SOURCE_ENV) 
 	watchexec -ce py 'python3 -m cli eat -c 2'
 
-all: rm uninstall install run 
-
-
-pure-all: env-rm rm env install test run
-
-
-	
 upload-to-test: rm freeze
+	$(SOURCE_ENV) 
 	python3 setup.py bdist_wheel --universal
 	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
@@ -59,29 +67,21 @@ upload-to-prod: rm freeze
 	twine upload dist/*
 
 
-freeze: auto_version
-	# pipreqs will find the module the project really depneds
-	# Don`t use this !
-	pipreqs . --force
+auto_version:
+	$(SOURCE_ENV) 
+	python3 version.py
 
-freeze-env: auto_version
-	#  pip3 will find all the module not belong to standard  library
-	pip3 freeze > requirements.txt
-
-
-env-rm:
+venv_rm:
 	rm -rdf venv
 
-env-create: 
-	python3 -m venv venv
+venv: venv_rm
+	python3 -m venv --clear venv
+	$(SOURCE_ENV)
+	pip install -r requirements.txt
+		
+requirements.txt: 
+	$(SOURCE_ENV)
+	pip3 freeze > requirements.txt
 
-env: env-create
-	pip3 install -r requirements.txt
+	
 
-source: 
-	echo "you need to manully source it"
-	echo ". env/bin/activate"
-	. venv/bin/activate
-
-auto_version:
-	python3 version.py

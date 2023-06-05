@@ -1,0 +1,16 @@
+
+# Called when you first enter the directory (or its children)
+autosrc_enter() {
+
+if [[ -d "venv" ]]; then
+    source venv/bin/activate
+    echo "activate"
+  else
+    echo "no python enviroment"
+  fi
+}
+
+# Called when you exit the directory
+autosrc_exit() {
+  deactivate
+}

@@ -4,6 +4,7 @@ autosrc_enter() {
 
 if [[ -d "venv" ]]; then
     source venv/bin/activate
+    pip install pynvim
     echo "activate"
   else
     echo "no python enviroment"

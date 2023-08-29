@@ -1,0 +1,22 @@
+[project]
+name = "python_cli2"
+version = "0.0.1"
+description = "say something"
+requires-python = ">=3.8"
+dependencies = [ ]
+authors = [
+    { name="Liu zhengqing", email="liuzq7@gmail.com" },
+  ]
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+  ]
+
+[project.scripts]
+python_cli2 = "python_cli2.main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

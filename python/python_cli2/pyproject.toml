@@ -1,5 +1,5 @@
 [project]
-name = "python_cli2"
+name = "cli2"
 version = "0.0.1"
 description = "say something"
 requires-python = ">=3.8"
@@ -15,7 +15,7 @@ classifiers = [
   ]
 
 [project.scripts]
-python_cli2 = "python_cli2.main"
+cli2 = "cli2.main"
 
 [build-system]
 requires = ["hatchling"]

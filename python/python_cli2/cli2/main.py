@@ -1,11 +1,11 @@
 # -*- coding: utf8 -*-
 
 from .a import func1
-from .fmoudle.c import func2
-from .fmoudle.d import func3
-from .fmoudle import func2_c
-import cli2.fmoudle.e as e
-from .fmoudle.e import func4
+from .module1.c import func2
+from .module1.d import func3
+from .module1 import func2_c
+import cli2.module1.e as e
+from .module1.e import func4
 
 def hello(name: str = "world"):
     func4()

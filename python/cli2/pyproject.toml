@@ -20,3 +20,4 @@ cli2 = "cli2.main:hello"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+

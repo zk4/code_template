@@ -16,3 +16,9 @@ run:
 
 test:
 	pytest
+
+test_module_and_function_specified:
+	pytest  tests/test_main.py::test_func4
+
+test_function_specified:
+	pytest -k test_func4

@@ -11,6 +11,7 @@ from .module1.e import func4
 from .module2.f import func5,func6
 
 def hello(name: str = "world"):
+    print("this could be run by  python -m cli.main")
     cli2.module1.e.func4()
     func6()
     func5()
@@ -23,5 +24,5 @@ def hello(name: str = "world"):
     return f"hello {name} ."
 
 if __name__ == "__main__":
-    #  print(hello())
-    print(hello("python"))
+    print("this could be run by  python -m cli.main")
+    hello("python")

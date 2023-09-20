@@ -15,7 +15,7 @@ classifiers = [
   ]
 
 [project.scripts]
-cli2 = "cli2.main"
+cli2 = "cli2.main:hello"
 
 [build-system]
 requires = ["hatchling"]

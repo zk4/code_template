@@ -13,3 +13,6 @@ upload:
 
 run:
 	python -m cli2.main
+
+test:
+	pytest

@@ -10,3 +10,6 @@ build:
 upload:
 	twine upload dist/*.whl
 
+
+run:
+	python -m cli2.main
